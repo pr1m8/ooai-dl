@@ -1,14 +1,20 @@
 [project]
 name = "ooai-dl"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "Document loading, web loading, and research utilities for LangChain-based pipelines."
 authors = [
-    {name = "Will", email = "you@example.com"},
+    { name = "Will", email = "you@example.com" },
 ]
-dependencies = ["pydantic>=2.13.3", "pydantic-settings>=2.14.0", "rich>=15.0.0", "structlog>=25.5.0"]
-requires-python = ">=3.13"
 readme = "README.md"
-license = {text = "MIT"}
+requires-python = ">=3.13"
+license = { text = "MIT" }
+
+dependencies = [
+    "pydantic>=2.13.3",
+    "pydantic-settings>=2.14.0",
+    "rich>=15.0.0",
+    "structlog>=25.5.0",
+]
 
 [project.optional-dependencies]
 lc = [
@@ -17,10 +23,109 @@ lc = [
     "langchain-community>=0.4.1",
     "langchain-mcp-adapters>=0.2.2",
 ]
+
+loaders-docling = [
+    "langchain-docling>=2.0.0",
+    "docling>=2.76.0",
+]
+
+loaders-unstructured = [
+    "langchain-unstructured>=1.0.1",
+    "unstructured>=0.21.5",
+    "unstructured-inference>=1.0.5",
+]
+
+loaders-pdf-advanced = [
+    "langchain-pymupdf4llm>=0.5.0",
+    "pymupdf4llm>=0.1.9",
+    "pymupdf>=1.27.1",
+    "pypdf>=5.9.0",
+    "pdfplumber>=0.11.9",
+    "pdfminer-six>=20251230",
+    "pypdfium2>=5.5.0",
+    "rapidocr-onnxruntime>=1.4.4",
+]
+
+loaders-office = [
+    "docx2txt>=0.9",
+    "openpyxl>=3.1.5",
+    "python-pptx>=1.0.2",
+    "EbookLib>=0.18",
+]
+
+loaders-browser = [
+    "playwright>=1.58.0",
+    "selenium>=4.41.0",
+]
+
+loaders-web = [
+    "beautifulsoup4>=4.14.3,<5.0.0",
+    "lxml>=6.0.2",
+    "trafilatura>=2.0.0",
+    "readability-lxml>=0.8.4.1",
+    "httpx>=0.28.1",
+    "aiohttp>=3.13.3",
+    "tldextract>=5.3.1",
+    "python-magic>=0.4.27",
+]
+
+loaders-firecrawl = [
+    "firecrawl-py>=4.18.0",
+]
+
+loaders-media = [
+    "youtube-transcript-api>=1.2.3",
+    "pytube>=15.0.0",
+]
+
+websearch = [
+    "langchain-tavily>=0.2.17",
+    "tavily-python>=0.7.22",
+    "langchain-exa>=1.0.0",
+    "exa-py>=1.16.1",
+    "duckduckgo-search>=8.1.1",
+    "langchain-google-community>=3.0.5",
+    "google-api-python-client>=2.191.0",
+    "google-search-results>=2.4.2",
+]
+
+research-scholarly = [
+    "arxiv>=2.4.0",
+    "semanticscholar>=0.11.0",
+    "pyalex>=0.21",
+    "crossrefapi>=1.7.0",
+    "habanero>=2.3.0",
+    "scholarly>=1.7.11",
+    "wikipedia>=1.4.0",
+]
+
+web-crawl = [
+    "scrapy>=2.14.1",
+    "scrapy-playwright>=0.0.46",
+]
+
+loaders = [
+    "ooai-dl[lc,loaders-docling,loaders-unstructured,loaders-pdf-advanced,loaders-office,loaders-browser,loaders-web,loaders-firecrawl,loaders-media,websearch,research-scholarly,web-crawl]",
+]
+
+mcp = [
+    "mcp>=1.26.0",
+    "langchain-mcp-adapters>=0.2.1",
+    "langsmith-mcp-server>=0.1.1",
+    "mcpdoc>=0.0.10",
+    "o2mcp>=0.0.3",
+    "fastmcp==3.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.0",
+    "pre-commit-hooks>=6.0.0",
+]
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
-
 
 [tool.pdm]
 distribution = true
